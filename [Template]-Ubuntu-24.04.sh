@@ -7,8 +7,10 @@ rm "$file"
 wget https://cloud-images.ubuntu.com/releases/"$release"/release/ubuntu-"$release"-server-cloudimg-amd64.img
 
 # Install Packages
+virt-customize -a "$file" --install qemu-guest-agent
 virt-customize -a "$file" --install linux-modules-extra-6.8.0-31-generic # Needs to be found for every release version
-virt-customize -a "$file" --install cifs-utils, nfs-common, qemu-guest-agent
+virt-customize -a "$file" --install cifs-utils
+virt-customize -a "$file" --install nfs-common
 
 # Extra Packages
 virt-customize -a "$file" --run-command 'add-apt-repository ppa:zhangsongcui3371/fastfetch'
