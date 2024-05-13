@@ -1,7 +1,7 @@
 # Create VM Template
 
 release=24.04
-vmid=9000 # Change VM ID
+vmid=9000 # Final Template ID
 file=ubuntu-"$release"-server-cloudimg-amd64.img
 rm "$file"
 wget https://cloud-images.ubuntu.com/releases/"$release"/release/ubuntu-"$release"-server-cloudimg-amd64.img
@@ -27,6 +27,9 @@ virt-customize -a "$file" --install fastfetch
 virt-customize -a "$file" --mkdir /media/Ptonomy
 virt-customize -a "$file" --append-line '/etc/fstab:192.168.1.8:/mnt/Ptonomy/Ptonomy /media/Ptonomy nfs defaults 0 0'
 
+# Allow SSH Password Login (Unsafe)
+# virt-customize -a "$file" --run-command 'echo "PasswordAuthentication yes" | tee /etc/ssh/sshd_config.d/60-cloudimg-settings.conf'
+
 # Create VM Template
 qm create "$vmid" --name "ubuntu-2404-template" --memory 2048 --cores 2 --net0 virtio,bridge=vmbr0
 qm importdisk "$vmid" "$file" local-lvm
@@ -35,8 +38,11 @@ qm set "$vmid" --boot c -bootdisk scsi0
 qm set "$vmid" --ide2 local-lvm:cloudinit
 qm set "$vmid" --serial0 socket --vga serial0
 qm set "$vmid" --agent enabled=1
+
 # Set if VM Boots on System Start
 qm set "$vmid" --onboot 0 # Default = 0
+
 # Resize Template Disk (Do When Cloned Not Here)
 # qm resize "$vmid" scsi0 +20G
+
 qm template "$vmid"
