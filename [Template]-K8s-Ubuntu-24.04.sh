@@ -32,12 +32,15 @@ virt-customize -a "$file" --firstboot-command 'rm /var/lib/dbus/machine-id'
 virt-customize -a "$file" --firstboot-command 'ln -s /etc/machine-id /var/lib/dbus/machine-id'
 
 # Create Script To Set as K8s Master
-virt-customize -a "$file" --append-line '/home/kmaster.sh:sudo kubeadm init'
 virt-customize -a "$file" --touch /home/kmaster.sh
+virt-customize -a "$file" --append-line '/home/kmaster.sh:sudo apt update'
+virt-customize -a "$file" --append-line '/home/kmsater.sh:sudo apt upgrade -y'
+virt-customize -a "$file" --append-line '/home/kmaster.sh:sudo kubeadm init'
 virt-customize -a "$file" --append-line '/home/kmaster.sh:mkdir -p $HOME/.kube'
 virt-customize -a "$file" --append-line '/home/kmaster.sh:sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config'
 virt-customize -a "$file" --append-line '/home/kmaster.sh:sudo chown $(id -u):$(id -g) $HOME/.kube/config'
-virt-customize -a "$file" --appedn-line '/home/kmaster.sh:kubeadm token create --print-join-command'
+virt-customize -a "$file" --append-line '/home/kmaster.sh:kubeadm token create --print-join-command'
+virt-customize -a "$file" --run-command 'chmod +x /home/kmaster.sh'
 
 # Mount CIFS Share
 # virt-customize -a "$file" --mkdir /media/Ptonomy
