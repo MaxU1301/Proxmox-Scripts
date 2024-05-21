@@ -1,7 +1,7 @@
 # Create VM Template
 
 release=24.04
-vmid=9000 # Final Template ID
+vmid=9002 # Final Template ID
 file=ubuntu-"$release"-server-cloudimg-amd64.img
 rm "$file"
 wget https://cloud-images.ubuntu.com/releases/"$release"/release/ubuntu-"$release"-server-cloudimg-amd64.img
