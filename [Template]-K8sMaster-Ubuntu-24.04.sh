@@ -65,7 +65,7 @@ rm runme.sh
 # virt-customize -a "$file" --run-command 'echo "PasswordAuthentication yes" | tee /etc/ssh/sshd_config.d/60-cloudimg-settings.conf'
 
 # Create VM Template
-qm create "$vmid" --name "ubuntu-2404-template" --memory 2048 --cores 2 --net0 virtio,bridge=vmbr0
+qm create "$vmid" --name "k8s-master-ubuntu-2404-template" --memory 2048 --cores 2 --net0 virtio,bridge=vmbr0
 qm importdisk "$vmid" "$file" local-lvm
 qm set "$vmid" --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-"$vmid"-disk-0
 qm set "$vmid" --boot c -bootdisk scsi0
