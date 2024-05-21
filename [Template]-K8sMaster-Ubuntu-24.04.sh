@@ -29,9 +29,9 @@ virt-customize -a "$file" --run-command 'apt update'
 virt-customize -a "$file" --run-command 'apt install -y docker-ce containerd.io'
 
 virt-customize -a "$file" --run-command 'curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list'
-virt-customize -a "$file" --install kubeadm
-virt-customize -a "$file" --install kubelet
-virt-customize -a "$file" --install kubectl
+virt-customize -a "$file" --run-command 'apt install -y kubeadm kubelet kubectl'
+# virt-customize -a "$file" --install kubelet
+# virt-customize -a "$file" --install kubectl
 
 # Set up as K8s Master
 if [ -e "runme.sh"]; then
