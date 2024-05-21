@@ -39,6 +39,7 @@ virt-customize -a "$file" --append-line '/home/kmaster.sh:sudo kubeadm init'
 virt-customize -a "$file" --append-line '/home/kmaster.sh:mkdir -p $HOME/.kube'
 virt-customize -a "$file" --append-line '/home/kmaster.sh:sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config'
 virt-customize -a "$file" --append-line '/home/kmaster.sh:sudo chown $(id -u):$(id -g) $HOME/.kube/config'
+virt-customize -a "$file" --append-line '/home/kmaster.sh:sudo kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml'
 virt-customize -a "$file" --append-line '/home/kmaster.sh:kubeadm token create --print-join-command'
 virt-customize -a "$file" --run-command 'chmod +x /home/kmaster.sh'
 
