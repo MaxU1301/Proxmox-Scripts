@@ -19,12 +19,12 @@ virt-customize -a "$file" --install fastfetch
 virt-customize -a "$file" --run-command 'ufw disable'
 virt-customize -a "$file" --run-command 'swapoff -a; sed -i '/swap/d' /etc/fstab'
 
-virt-customize -a "$file" --install docker.io, apt-transport-https, curl, ca-certificates, gpg
+virt-customize -a "$file" --install docker.io,apt-transport-https,curl,ca-certificates,gpg
 
 virt-customize -a "$file" --run-command 'curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg'
-virt-customize -a "$file" --run-command "echo 'deb \[signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg\] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list"
+virt-customize -a "$file" --run-command "echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list"
 
-virt-customize -a "$file" --install kubeadm, kubelet, kubectl, kubernetes-cni
+virt-customize -a "$file" --install kubeadm,kubelet,kubectl,kubernetes-cni
 
 virt-customize -a "$file" --install linux-modules-extra-6.8.0-31-generic # Needs to be found for every release version
 
