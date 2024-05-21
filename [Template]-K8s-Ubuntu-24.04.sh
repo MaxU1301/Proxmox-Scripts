@@ -10,6 +10,7 @@ wget https://cloud-images.ubuntu.com/releases/"$release"/release/ubuntu-"$releas
 virt-customize -a "$file" --install qemu-guest-agent
 virt-customize -a "$file" --install cifs-utils
 virt-customize -a "$file" --install nfs-common
+virt-customize -a "$file" --install linux-modules-extra-6.8.0-31-generic # Needs to be found for every release version
 
 # Extra Packages
 virt-customize -a "$file" --run-command 'add-apt-repository ppa:zhangsongcui3371/fastfetch'
@@ -24,11 +25,11 @@ virt-customize -a "$file" --install docker.io,apt-transport-https,curl,ca-certif
 virt-customize -a "$file" --run-command 'curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg'
 virt-customize -a "$file" --run-command "echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list"
 
-# virt-customize -a "$file" --install kubeadm,kubelet,kubectl,kubernetes-cni
-virt-customize -a "$file" --touch "/home/runme.sh"
-virt-customize -a "$file" --append-line "/home/runme.sh:sudo apt install kubeadm kubelet kubectl kubernetes-cni"
-
-virt-customize -a "$file" --install linux-modules-extra-6.8.0-31-generic # Needs to be found for every release version
+# Setting First Boot Commands
+virt-customize -a "$file" --firstboot-install kubeadm,kubelet,kubectl,kubernetes-cni
+virt-customize -a "$file" --firstboot-command 'echo -n >/etc/machine-id'
+virt-customize -a "$file" --firstboot-commnad 'rm /var/lib/dbus/machine-id'
+virt-customize -a "$file" --firstboot-command 'ln -s /etc/machine-id /var/lib/dbus/machine-id'
 
 # Mount CIFS Share
 # virt-customize -a "$file" --mkdir /media/Ptonomy
