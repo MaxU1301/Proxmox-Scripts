@@ -28,7 +28,7 @@ virt-customize -a "$file" --run-command "echo 'deb [signed-by=/etc/apt/keyrings/
 # Setting First Boot Commands
 virt-customize -a "$file" --firstboot-install kubeadm,kubelet,kubectl,kubernetes-cni
 virt-customize -a "$file" --firstboot-command 'echo -n >/etc/machine-id'
-virt-customize -a "$file" --firstboot-commnad 'rm /var/lib/dbus/machine-id'
+virt-customize -a "$file" --firstboot-command 'rm /var/lib/dbus/machine-id'
 virt-customize -a "$file" --firstboot-command 'ln -s /etc/machine-id /var/lib/dbus/machine-id'
 
 # Mount CIFS Share
