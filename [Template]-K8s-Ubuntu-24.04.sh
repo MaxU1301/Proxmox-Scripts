@@ -1,7 +1,7 @@
 # Create VM Template
 
 release=24.04
-vmid=9001 # Final Template ID
+vmid=9003 # Final Template ID
 file=ubuntu-"$release"-server-cloudimg-amd64.img
 rm "$file"
 wget https://cloud-images.ubuntu.com/releases/"$release"/release/ubuntu-"$release"-server-cloudimg-amd64.img
@@ -18,14 +18,8 @@ virt-customize -a "$file" --install fastfetch
 # Install K8s Using kubeadm
 virt-customize -a "$file" --run-command 'ufw disable'
 virt-customize -a "$file" --run-command 'swapoff -a; sed -i '/swap/d' /etc/fstab'
-virt-customize -a "$file" --run-command 'echo "net.bridge.bridge-nf-call-ip6tables = 1" >> /etc/sysctl.d/kubernetes.conf'
-virt-customize -a "$file" --run-command 'echo "net.bridge.bridge-nf-call-iptables = 1" >> /etc/sysctl.d/kubernetes.conf'
-virt-customize -a "$file" --run-command 'sysctl --system'
 
-virt-customize -a "$file" --run-command 'apt install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common'
-virt-customize -a "$file" --run-command 'curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"'
-virt-customize -a "$file" --run-command 'apt update'
-virt-customize -a "$file" --run-command 'apt install -y docker-ce containerd.io'
+virt-customize -a "$file" --install docker.io
 virt-customize -a "$file" --intsall apt-transport-https
 virt-customize -a "$file" --install curl
 
@@ -33,24 +27,6 @@ virt-customize -a "$file" --run-command 'curl -s https://packages.cloud.google.c
 virt-customize -a "$file" --run-command 'echo "deb https://apt.kubernetes.io/ kubernetes-noble main" > /etc/apt/sources.list.d/kubernetes.list'
 virt-customize -a "$file" --run-command 'apt update'
 virt-customize -a "$file" --run-command 'apt install -y kubeadm kubelet kubectl kubernetes-cni'
-# virt-customize -a "$file" --install kubelet
-# virt-customize -a "$file" --install kubectl
-
-# Set up as K8s Master
-if [ -e "runme.sh"]; then
-    rm runme.sh
-fi
-touch runme.sh
-
-echo "
-ipaddr=\$(ip a s eth0 | grep -E -o 'inet [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | cut -d' ' -f2)
-kubeadm init --apiserver-advertise-address=\${ipaddr} --pod-network-cidr=\${ipaddr}/23  --ignore-preflight-errors=all
-kubectl --kubeconfig=/etc/kubernetes/admin.conf create -f https://docs.projectcalico.org/v3.14/manifests/calico.yaml
-kubeadm token create --print-join-command" >> runme.sh
-
-virt-customize -a "$file" --firstboot runme.sh
-
-rm runme.sh
 
 virt-customize -a "$file" --install linux-modules-extra-6.8.0-31-generic # Needs to be found for every release version
 
@@ -69,7 +45,7 @@ virt-customize -a "$file" --install linux-modules-extra-6.8.0-31-generic # Needs
 # virt-customize -a "$file" --run-command 'echo "PasswordAuthentication yes" | tee /etc/ssh/sshd_config.d/60-cloudimg-settings.conf'
 
 # Create VM Template
-qm create "$vmid" --name "k8s-master-ubuntu-2404-template" --memory 2048 --cores 2 --net0 virtio,bridge=vmbr0
+qm create "$vmid" --name "k8s-ubuntu-2404-template" --memory 2048 --cores 2 --net0 virtio,bridge=vmbr0
 qm importdisk "$vmid" "$file" local-lvm
 qm set "$vmid" --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-"$vmid"-disk-0
 qm set "$vmid" --boot c -bootdisk scsi0
