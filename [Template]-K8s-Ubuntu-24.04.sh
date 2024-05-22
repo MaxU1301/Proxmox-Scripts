@@ -5,12 +5,16 @@ vmid=9003 # Final Template ID
 file=ubuntu-"$release"-server-cloudimg-amd64.img
 
 # Get Ubuntu Cloud Image
-rm "$file"
+if [ -f "$file" ]; then
+    rm $file
+fi
 wget https://cloud-images.ubuntu.com/releases/"$release"/release/ubuntu-"$release"-server-cloudimg-amd64.img
 
 # Get SetAsK8sMaster.sh script
-rm SetAsK8sMaster.sh
-wget 
+if [ -f SetAsK8sMaster.sh ]; then
+    rm SetAsK8sMaster.sh
+fi
+wget https://github.com/MaxU1301/Proxmox-Scripts/raw/main/SubScripts/SetAsK8sMaster.sh
 
 # Install Packages
 virt-customize -a "$file" --install qemu-guest-agent
@@ -69,7 +73,7 @@ qm set "$vmid" --agent enabled=1
 # Set if VM Boots on System Start
 qm set "$vmid" --onboot 0 # Default = 0
 
-# Resize Template Disk
+# Resize Template Disk to 10 GiB total
 qm resize "$vmid" scsi0 +6.5G
 
 qm template "$vmid"
