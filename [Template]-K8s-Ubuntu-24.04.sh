@@ -5,15 +5,11 @@ vmid=9003 # Final Template ID
 file=ubuntu-"$release"-server-cloudimg-amd64.img
 
 # Get Ubuntu Cloud Image
-if [ -f "$file" ]; then
-    rm $file
-fi
+if [ -f "$file" ]; then rm $file; fi
 wget https://cloud-images.ubuntu.com/releases/"$release"/release/ubuntu-"$release"-server-cloudimg-amd64.img
 
 # Get SetAsK8sMaster.sh script
-if [ -f SetAsK8sMaster.sh ]; then
-    rm SetAsK8sMaster.sh
-fi
+if [ -f SetAsK8sMaster.sh ]; then rm SetAsK8sMaster.sh; fi
 wget https://github.com/MaxU1301/Proxmox-Scripts/raw/main/SubScripts/SetAsK8sMaster.sh
 
 # Install Packages
