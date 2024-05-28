@@ -7,7 +7,6 @@ export NVM_DIR="$HOME/.nvm"
 nvm install 20
 
 # Install Nginx
-sudo apt install npm -y
 sudo apt install nginx -y
 
 # Authenticate GH
@@ -29,7 +28,7 @@ npm i
 npx quartz create
 
 # Create NGINX Config
-ipaddr=\$(ip a s eth0 | grep -E -o 'inet [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | cut -d' ' -f2)
+ipaddr=$(ip a s eth0 | grep -E -o 'inet [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | cut -d' ' -f2)
 echo "
 server {
   listen 80;
