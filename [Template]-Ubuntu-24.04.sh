@@ -29,6 +29,7 @@ virt-customize -a "$file" --install fastfetch,gh
 virt-customize -a "$file" --firstboot-command 'echo -n >/etc/machine-id'
 virt-customize -a "$file" --firstboot-command 'rm /var/lib/dbus/machine-id'
 virt-customize -a "$file" --firstboot-command 'ln -s /etc/machine-id /var/lib/dbus/machine-id'
+virt-customize -a "$file" --firstboot-command 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash'
 
 # Create Script To Set as K8s Master
 chmod +x SetupQuartz.sh
