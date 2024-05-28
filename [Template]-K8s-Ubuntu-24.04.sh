@@ -40,7 +40,7 @@ virt-customize -a "$file" --firstboot-command 'rm /var/lib/dbus/machine-id'
 virt-customize -a "$file" --firstboot-command 'ln -s /etc/machine-id /var/lib/dbus/machine-id'
 
 # Create Script To Set as K8s Master
-sudo chmod +x SetAsK8sMaster.sh
+chmod +x SetAsK8sMaster.sh
 virt-customize -a "$file" --upload 'SetAsK8sMaster.sh:/home/SetAsK8sMaster.sh'
 
 # Mount CIFS Share

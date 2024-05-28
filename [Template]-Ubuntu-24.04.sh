@@ -31,7 +31,7 @@ virt-customize -a "$file" --firstboot-command 'rm /var/lib/dbus/machine-id'
 virt-customize -a "$file" --firstboot-command 'ln -s /etc/machine-id /var/lib/dbus/machine-id'
 
 # Create Script To Set as K8s Master
-sudo chmod +x SetupQuartz.sh
+chmod +x SetupQuartz.sh
 virt-customize -a "$file" --upload 'SetupQuartz.sh:/home/SetupQuartz.sh'
 
 # Mount CIFS Share
