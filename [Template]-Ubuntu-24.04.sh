@@ -27,6 +27,11 @@ virt-customize -a "$file" --install fastfetch
 virt-customize -a "$file" --mkdir /media/Ptonomy
 virt-customize -a "$file" --append-line '/etc/fstab:192.168.1.8:/mnt/Ptonomy/Ptonomy /media/Ptonomy nfs defaults 0 0'
 
+# First Boot Commands Remove Machine ID
+virt-customize -a "$file" --firstboot-command 'echo -n >/etc/machine-id'
+virt-customize -a "$file" --firstboot-command 'rm /var/lib/dbus/machine-id'
+virt-customize -a "$file" --firstboot-command 'ln -s /etc/machine-id /var/lib/dbus/machine-id'
+
 # Allow SSH Password Login (Unsafe)
 # virt-customize -a "$file" --run-command 'echo "PasswordAuthentication yes" | tee /etc/ssh/sshd_config.d/60-cloudimg-settings.conf'
 
