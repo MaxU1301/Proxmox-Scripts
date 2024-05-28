@@ -3,7 +3,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 nvm install 20
 
 # Install Nginx
-sudo apt install Nginx
+sudo apt install nginx
 
 # Authenticate GH
 gh auth login
@@ -12,7 +12,7 @@ gh auth login
 sudo mkdir /www
 cd /
 sudo chmod ugo+rwx www
-cd /wwww
+cd /www
 
 # Clone repos
 git clone https://github.com/jackyzha0/quartz.git
