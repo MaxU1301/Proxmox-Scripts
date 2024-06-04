@@ -22,3 +22,12 @@ sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf create -f https://docs.proj
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
 kubeadm token create --print-join-command
+
+# Download MetalLB and NFS Scripts
+wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/SetupMetalLB.sh
+wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/SetupNFSProvisioner.sh
+
+sudo chmod +x SetupMetalLB.sh
+sudo chmod +x SetupNFSProvisioner.sh
+
+echo "Please run SetupNFSProvisioner.sh and SetupMetalLB.sh"
