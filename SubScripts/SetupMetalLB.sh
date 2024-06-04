@@ -3,4 +3,11 @@
 helm repo add metallb https://metallb.github.io/metallb
 helm install metallb metallb/metallb
 
-kubectl create -f 
+# Config for MetalLB
+mkdir MetalLBconfig
+cd MetalLBconfig
+wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/MetalLBconfig/metallb.yaml
+
+nano metallb.yaml
+
+kubectl create -f metallb.yaml
