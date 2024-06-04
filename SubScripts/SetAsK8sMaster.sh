@@ -18,4 +18,7 @@ watch kubectl get pods -n calico-system
 
 sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf create -f https://docs.projectcalico.org/v3.14/manifests/calico.yaml
 
+# Install helm
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
 kubeadm token create --print-join-command
