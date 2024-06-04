@@ -16,4 +16,6 @@ curl https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/cu
 sudo kubectl create -f custom-resources.yaml
 watch kubectl get pods -n calico-system
 
+sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf create -f https://docs.projectcalico.org/v3.14/manifests/calico.yaml
+
 kubeadm token create --print-join-command
