@@ -1,6 +1,9 @@
 # Install initial packages
-apt install cifs-utils nfs-common -y
+apt install cifs-utils nfs-common net-tools -y
+# ip route  ##make sure there is only one default route on the main ip
+# sudo route delete default gw 172.22.64.1 eth0
 add-apt-repository ppa:zhangsongcui3371/fastfetch
+sudo apt update
 apt install fastfetch -y
 
 # Install K8s Using kubeadm

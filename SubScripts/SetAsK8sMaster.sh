@@ -1,6 +1,7 @@
 sudo apt update
 sudo apt upgrade -y
-sudo apt install kubeadm kubelet kubectl kubernetes-cni
+sudo apt install kubeadm kubelet kubectl kubernetes-cni -y
+# sudo route delete default gw 172
 sudo kubeadm init --pod-network-cidr=192.168.0.0/22
 
 # Initialize Kubeadm For Current User
