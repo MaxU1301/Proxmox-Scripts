@@ -19,3 +19,18 @@ singleuser:
   # `cmd: null` allows the custom CMD of the Jupyter docker-stacks to be used
   # which performs further customization on startup.
   cmd: null
+hub:
+  config:
+    Authenticator:
+      admin_users:
+        - max
+        - bob
+      allowed_users:
+        - kate
+        - charlie
+    DummyAuthenticator: 
+      password: a-shared-secret-password
+    JupyterHub:
+      authenticator_class: dummy
+    KubeSpawner:
+      k8s_api_request_timeout: 10
