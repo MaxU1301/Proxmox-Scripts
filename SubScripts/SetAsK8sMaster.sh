@@ -1,8 +1,7 @@
 sudo apt update
 sudo apt upgrade -y
 sudo apt install kubeadm kubelet kubectl kubernetes-cni -y
-sudo kubeadm init --pod-network-cidr=192.168.0.0/22
-# --apiserver-advertise-address=192.168.2.6
+sudo kubeadm init --pod-network-cidr=10.1.0.0/16
 
 # Initialize Kubeadm For Current User
 mkdir -p $HOME/.kube
@@ -16,6 +15,11 @@ kubectl create -f https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/mai
 watch kubectl get pods -n calico-system
 kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 kubectl get nodes -o wide
+
+cd /usr/local/bin
+curl -L https://github.com/projectcalico/calico/releases/download/v3.28.0/calicoctl-linux-amd64 -o kubectl-calico
+chmod +x kubectl-calico
+cd ~
 
 # Install helm
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
