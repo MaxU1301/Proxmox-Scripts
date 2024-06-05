@@ -16,4 +16,4 @@ spec:
   ipAddressPools:
   - first-pool
   interfaces:
-  - eth1
+  - "eth1"
