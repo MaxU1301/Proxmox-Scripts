@@ -17,8 +17,8 @@ kubectl taint nodes --all node-role.kubernetes.io/control-plane-
 kubectl get nodes -o wide
 
 cd /usr/local/bin
-curl -L https://github.com/projectcalico/calico/releases/download/v3.28.0/calicoctl-linux-amd64 -o kubectl-calico
-chmod +x kubectl-calico
+sudo curl -L https://github.com/projectcalico/calico/releases/download/v3.28.0/calicoctl-linux-amd64 -o kubectl-calico
+sudo chmod +x kubectl-calico
 cd ~
 
 # Install helm
