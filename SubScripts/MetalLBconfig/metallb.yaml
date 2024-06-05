@@ -13,5 +13,7 @@ metadata:
   name: metallb-l2adv
   namespace: metallb-system
 spec:
+  ipAddressPools:
+  - first-pool
   interfaces: 
   - eth1
