@@ -1,7 +1,7 @@
 sudo apt update
 sudo apt upgrade -y
 sudo apt install kubeadm kubelet kubectl kubernetes-cni -y
-sudo kubeadm init --apiserver-advertise-address=192.168.2.161 --pod-network-cidr=192.168.0.0/22
+sudo kubeadm init --apiserver-advertise-address=192.168.2.6 --pod-network-cidr=192.168.0.0/22
 
 # Initialize Kubeadm For Current User
 mkdir -p $HOME/.kube
