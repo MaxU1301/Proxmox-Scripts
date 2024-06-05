@@ -15,5 +15,5 @@ metadata:
 spec:
   ipAddressPools:
   - first-pool
-  interfaces: 
+  interfaces:
   - eth1
