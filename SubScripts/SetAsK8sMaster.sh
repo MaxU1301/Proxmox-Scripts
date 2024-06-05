@@ -42,11 +42,13 @@ curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/SetupMetalLB.sh
 wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/SetupNFSProvisioner.sh
 wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/InstallJupyterHub.sh
+wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/InstallAll.sh
 
 # Make the scripts executable
 sudo chmod +x SetupMetalLB.sh
 sudo chmod +x SetupNFSProvisioner.sh
 sudo chmod +x InstallJupyterHub.sh
+sudo chmod +x InstallAll.sh
 
 # Output instructions for the next steps
 echo "Please run SetupNFSProvisioner.sh and SetupMetalLB.sh"
