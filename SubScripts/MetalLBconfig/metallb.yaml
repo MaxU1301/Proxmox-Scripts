@@ -13,4 +13,5 @@ metadata:
   name: metallb-l2adv
   namespace: metallb-system
 spec:
-  interfaces: eth1
+  interfaces: 
+  - eth1
