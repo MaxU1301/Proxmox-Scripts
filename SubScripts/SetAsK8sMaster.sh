@@ -23,9 +23,7 @@ kubectl create -f https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/mai
 
 # Watch Calico pods until they are all running
 echo "Waiting for Calico pods to be ready..."
-until kubectl get pods -n calico-system | grep -m 1 'Running'; do
-    sleep 1
-done
+watch kubectl get pods -n calico-system
 
 # Allow scheduling on the control-plane node
 kubectl taint nodes --all node-role.kubernetes.io/control-plane-
