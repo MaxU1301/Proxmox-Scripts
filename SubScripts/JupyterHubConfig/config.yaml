@@ -9,6 +9,7 @@
 # Available chart versions: https://hub.jupyter.org/helm-chart/
 #
 singleuser:
+  allowPrivilegeEscalation: false
   image:
     # You should replace the "latest" tag with a fixed version from:
     # https://hub.docker.com/r/jupyter/datascience-notebook/tags/
