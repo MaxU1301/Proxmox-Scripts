@@ -24,6 +24,10 @@ singleuser:
     dynamic:
       storageClass: nfs-client
     capacity: 10Gi
+  lifecycleHooks:
+    preStop:
+      exec:
+        command: ["/bin/sh","-c","sudo shutdown now; shutdown now"]
   extraPodConfig: {
     terminationGracePeriodSeconds: 10
   }
