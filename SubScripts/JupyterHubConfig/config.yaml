@@ -24,6 +24,9 @@ singleuser:
     dynamic:
       storageClass: nfs-client
     capacity: 10Gi
+  extraPodConfig: {
+    terminationGracePeriodSeconds: 10
+  }
 hub:
   config:
     Authenticator:
