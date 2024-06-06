@@ -23,6 +23,15 @@ singleuser:
     dynamic:
       storageClass: nfs-client
     capacity: 10Gi
+  terminationGracePeriodSeconds: 10
+  containers:
+    - lifecycle:
+        preStop:
+        exec:
+          command:
+            - /bin/sh
+            - -c
+            - sleep 10
 hub:
   config:
     Authenticator:
