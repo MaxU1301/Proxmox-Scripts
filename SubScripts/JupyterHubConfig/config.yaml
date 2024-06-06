@@ -47,7 +47,7 @@ hub:
       authenticator_class: dummy
     KubeSpawner:
       k8s_api_request_timeout: 10
-  lifecycleHooks:
+  lifecycle:
     preStop:
       exec:
         command: ["/bin/sh","-c","pkill [\\w-]*jupyter[\\w-]*"]
