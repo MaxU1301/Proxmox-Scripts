@@ -19,6 +19,10 @@ singleuser:
   # `cmd: null` allows the custom CMD of the Jupyter docker-stacks to be used
   # which performs further customization on startup.
   cmd: null
+  storage:
+    dynamic:
+      storageClass: nfs-client
+    capacity: 10Gi
 hub:
   config:
     Authenticator:
