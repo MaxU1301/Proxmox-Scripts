@@ -49,4 +49,4 @@ hub:
   lifecycleHooks:
     preStop:
       exec:
-        command: ["/bin/sh","-c","pkill jupyterhub-sing"]
+        command: ["/bin/sh","-c","pkill jupyterhub"]
