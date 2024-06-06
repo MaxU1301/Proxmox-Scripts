@@ -27,7 +27,7 @@ singleuser:
   lifecycleHooks:
     preStop:
       exec:
-        command: ["/bin/sh","-c","sudo shutdown now; shutdown now"]
+        command: ["/bin/sh","-c","sudo shutdown --halt now; shutdown --halt now"]
   extraPodConfig: {
     terminationGracePeriodSeconds: 10
   }
