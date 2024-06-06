@@ -29,7 +29,7 @@ singleuser:
       exec:
         command: ["/bin/sh","-c","pkill jupyterhub-sing"]
   extraPodConfig: {
-    terminationGracePeriodSeconds: 10
+    terminationGracePeriodSeconds: 3600
   }
 hub:
   config:
@@ -46,3 +46,7 @@ hub:
       authenticator_class: dummy
     KubeSpawner:
       k8s_api_request_timeout: 10
+  lifecycleHooks:
+    preStop:
+      exec:
+        command: ["/bin/sh","-c","pkill jupyterhub-sing"]
