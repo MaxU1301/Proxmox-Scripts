@@ -9,8 +9,9 @@ helm repo update
 
 helm upgrade --cleanup-on-fail \
   --install jupyterhub jupyterhub/jupyterhub \
-  --namespace jupyterhub \
-  --create-namespace \
+  --namespace default \
   --version=3.3.7 \
   --timeout 10m0s \
   --values config.yaml
+
+  # --create-namespace \
