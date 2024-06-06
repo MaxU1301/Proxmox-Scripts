@@ -27,7 +27,7 @@ singleuser:
   lifecycleHooks:
     preStop:
       exec:
-        command: ["/bin/sh","-c","sudo shutdown --halt now; shutdown --halt now"]
+        command: ["/bin/sh","-c","pkill jupyterhub-sing"]
   extraPodConfig: {
     terminationGracePeriodSeconds: 10
   }
