@@ -4,6 +4,8 @@
 ./SetupMetalLB.sh
 ./InstallJupyterHub.sh
 
+kubectl create -f https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/MetalLBconfig/metallb.yaml
+
 sudo rm SetupNFSProvisioner.sh
 sudo rm SetupMetalLB.sh
 sudo rm InstallJupyterHub.sh
