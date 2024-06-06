@@ -27,7 +27,8 @@ singleuser:
   lifecycleHooks:
     preStop:
       exec:
-        command: ["/bin/sh","-c","pkill jupyterhub-sing"]
+        command: ["/bin/sh","-c","pkill [\w-]*jupyter[\w-]*"]
+        # jupyterhub-sing
   extraPodConfig: {
     terminationGracePeriodSeconds: 3600
   }
@@ -49,4 +50,4 @@ hub:
   lifecycleHooks:
     preStop:
       exec:
-        command: ["/bin/sh","-c","pkill jupyterhub"]
+        command: ["/bin/sh","-c","pkill [\w-]*jupyter[\w-]*"]
