@@ -27,8 +27,9 @@ singleuser:
   lifecycleHooks:
     preStop:
       exec:
-        command: ["/bin/sh","-c","pkill","[\\w-]*jupyter[\\w-]*"]
+        command: ["pkill", "jupyterhub-sing"]
         # jupyterhub-sing
+        #[\\w-]*jupyter[\\w-]*
 hub:
   config:
     Authenticator:
