@@ -15,4 +15,4 @@ sudo rm InstallAll.sh
 wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/JupyterHubConfig/UpdateJupyterHub.sh
 chmod +x UpdateJupyterHub.sh
 
-watch kubectl get all
+watch -n 0.1 kubectl get all
