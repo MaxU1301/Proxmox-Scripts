@@ -8,6 +8,8 @@
 # Chart default values:     https://github.com/jupyterhub/zero-to-jupyterhub-k8s/blob/HEAD/jupyterhub/values.yaml
 # Available chart versions: https://hub.jupyter.org/helm-chart/
 #
+cull:
+  enabled: false
 singleuser:
   allowPrivilegeEscalation: false
   image:
