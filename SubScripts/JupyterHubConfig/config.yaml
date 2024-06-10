@@ -26,10 +26,10 @@ singleuser:
     dynamic:
       storageClass: nfs-client
     capacity: 10Gi
-  lifecycleHooks:
-    preStop:
-      exec:
-        command: ["pkill", "jupyterhub-sing"]
+  # lifecycleHooks:
+  #   preStop:
+  #     exec:
+  #       command: ["pkill", "jupyterhub-sing"]
         # jupyterhub-sing
         #[\\w-]*jupyter[\\w-]*
 hub:
