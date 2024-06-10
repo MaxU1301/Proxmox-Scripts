@@ -39,9 +39,9 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Install cri-dockerd
-wget https://github.com/Mirantis/cri-dockerd/releases/download/v0.3.14/cri-dockerd-0.3.14.amd64.tgz
-tar xvf cri-dockerd-0.3.14.amd64.tgz
-./cri-dockerd/cri-dockerd
+# wget https://github.com/Mirantis/cri-dockerd/releases/download/v0.3.14/cri-dockerd-0.3.14.amd64.tgz
+# tar xvf cri-dockerd-0.3.14.amd64.tgz
+# ./cri-dockerd/cri-dockerd
 
 rm -rf cri-dockerd
 rm cri-dockerd-0.3.14.amd64.tgz
