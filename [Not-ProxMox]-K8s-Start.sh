@@ -20,7 +20,7 @@ swapoff -a
 sed -i '/swap/d' /etc/fstab
 
 # Install Docker and dependencies for Kubernetes
-sudo apt-get remove docker docker-engine docker.io containerd runc
+sudo apt remove docker docker.io containerd runc
 
 sudo apt-get update
 
