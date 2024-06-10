@@ -39,8 +39,8 @@ sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Install cri-dockerd
-wget https://github.com/Mirantis/cri-dockerd/releases/download/v0.3.14/cri-dockerd_0.3.14.3-0.ubuntu-jammy_amd64.deb
-dpkg -i cri-dockerd_0.3.14.3-0.ubuntu-jammy_amd64.deb
+# wget https://github.com/Mirantis/cri-dockerd/releases/download/v0.3.14/cri-dockerd_0.3.14.3-0.ubuntu-jammy_amd64.deb
+# dpkg -i cri-dockerd_0.3.14.3-0.ubuntu-jammy_amd64.deb
 
 apt install -y apt-transport-https curl ca-certificates gpg
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
