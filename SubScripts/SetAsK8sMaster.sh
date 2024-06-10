@@ -9,6 +9,9 @@ sudo apt upgrade -y
 # Install Kubernetes components
 sudo apt install kubeadm kubelet kubectl kubernetes-cni -y
 
+sudo rm /etc/containerd/config.toml
+sudo systemctl restart containerd
+
 # Initialize Kubeadm with a specific pod network CIDR
 # sudo kubeadm init --pod-network-cidr=10.1.0.0/16
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
