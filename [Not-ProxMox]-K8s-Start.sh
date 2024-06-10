@@ -43,8 +43,8 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 # tar xvf cri-dockerd-0.3.14.amd64.tgz
 # ./cri-dockerd/cri-dockerd
 
-rm -rf cri-dockerd
-rm cri-dockerd-0.3.14.amd64.tgz
+# rm -rf cri-dockerd
+# rm cri-dockerd-0.3.14.amd64.tgz
 
 apt install -y apt-transport-https curl ca-certificates gpg
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
