@@ -11,7 +11,7 @@ sudo apt install kubeadm kubelet kubectl kubernetes-cni -y
 
 # Initialize Kubeadm with a specific pod network CIDR
 # sudo kubeadm init --pod-network-cidr=10.1.0.0/16
-sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --cri-socket unix:///var/run/cri-dockerd.sock
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 
 # Set up kubeconfig for the current user
 mkdir -p $HOME/.kube
