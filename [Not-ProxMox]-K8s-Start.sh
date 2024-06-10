@@ -71,6 +71,9 @@ apt upgrade -y
 # Install Kubernetes components
 apt install -y kubeadm kubelet kubectl kubernetes-cni
 
+sudo rm /etc/containerd/config.toml
+sudo systemctl restart containerd
+
 # Download and set permissions for the K8s master setup script
 wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/SetAsK8sMaster.sh
 sudo chmod +x SetAsK8sMaster.sh
