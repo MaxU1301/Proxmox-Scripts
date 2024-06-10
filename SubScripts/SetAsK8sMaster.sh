@@ -57,7 +57,7 @@ sudo chmod +x InstallJupyterHub.sh
 sudo chmod +x InstallAll.sh
 
 # Output instructions for the next steps
-echo "Please run SetupNFSProvisioner.sh and SetupMetalLB.sh"
+echo "Please run InstallAll.sh"
 
 # Generate the kubeadm join command
 kubeadm token create --print-join-command
