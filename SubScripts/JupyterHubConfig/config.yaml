@@ -24,7 +24,7 @@ singleuser:
   cmd: null
   storage:
     dynamic:
-      storageClass: local-path
+      storageClass: nfs-client
     capacity: 10Gi
   # lifecycleHooks:
   #   preStop:

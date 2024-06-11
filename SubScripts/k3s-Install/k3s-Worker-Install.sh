@@ -1,1 +1,2 @@
-curl -sfL https://get.k3s.io | K3S_URL=https://192.168.2.175:6443 K3S_TOKEN=K105394c9db9d8e0eece8fc644beae2aac312c1d25d10a59e039f30d33f1a0ec4e2::server:8519206615cc18ee2a1428367730e313 sh -
+sudo apt install -y cifs-utils nfs-common net-tools
+curl -sfL https://get.k3s.io | K3S_URL=https://192.168.2.52:6443 K3S_TOKEN=K10d106e2f9e752c263eea92f673c6b141a309c2d05f317999e2652625444862e8d::server:74eecb9dc899c7529ecdb77bf23d1129 sh -
