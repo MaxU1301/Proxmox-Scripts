@@ -1,1 +1,1 @@
-curl -sfL https://get.k3s.io | K3S_URL=https://192.168.2.218:6443 K3S_TOKEN=K109f8d5d40884336256f980d0c62ebd149834f39a7a3af74d647d0ec5e50c58f00::server:1d3f3ad65c0f6cc906d8e475c1d66044 sh -
+curl -sfL https://get.k3s.io | K3S_URL=https://192.168.2.175:6443 K3S_TOKEN=K105394c9db9d8e0eece8fc644beae2aac312c1d25d10a59e039f30d33f1a0ec4e2::server:8519206615cc18ee2a1428367730e313 sh -

@@ -1,5 +1,5 @@
 # --flannel-iface=eth1
-curl -sfL https://get.k3s.io | sh -s - server
+curl -sfL https://get.k3s.io | sh -
 sleep 10
 sudo k3s kubectl get nodes
 ip a

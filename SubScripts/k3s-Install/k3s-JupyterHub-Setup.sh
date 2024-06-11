@@ -4,7 +4,7 @@ sudo cp /etc/rancher/k3s/k3s.yaml /root/.kube/config
 
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
-watch kubectl get pods -n kube-flannel
+sudo watch kubectl get pods -n kube-flannel
 
 # ip range 192.168.1.30-192.168.1.50
 
