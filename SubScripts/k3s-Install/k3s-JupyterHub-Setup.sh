@@ -4,8 +4,6 @@ sudo cp /etc/rancher/k3s/k3s.yaml /root/.kube/config
 
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
-sudo watch kubectl get pods -n kube-flannel
-
 # ip range 192.168.1.30-192.168.1.50
 
 sudo k3s kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.5/config/manifests/metallb-native.yaml
@@ -21,7 +19,7 @@ sudo helm install nfs-subdir-external-provisioner nfs-subdir-external-provisione
     --set nfs.path=/mnt/Ptonomy/k8s-NFS-test \
     --set storageClass.archiveOnDelete=false \
     --set storageClass.defaultClass=false \
-    --set storageClass.name=nfs-client
+    --set storageClass.name=nfs-client \
     --set storageClass.accessModes=ReadWriteOnce
 
 
