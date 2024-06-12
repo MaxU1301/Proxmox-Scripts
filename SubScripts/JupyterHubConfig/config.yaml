@@ -26,7 +26,16 @@ singleuser:
     dynamic:
       storageClass: nfs-client
     capacity: 10Gi
-  # lifecycleHooks:
+  lifecycleHooks:
+    postStart:
+        exec:
+          command:
+            [
+              "gitpuller",
+              "https://github.com/UMD-SustainabilityCenter/training-course",
+              "main",
+              "",
+            ]
   #   preStop:
   #     exec:
   #       command: ["pkill", "jupyterhub-sing"]

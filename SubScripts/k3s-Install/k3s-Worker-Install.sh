@@ -1,2 +1,2 @@
 sudo apt install -y cifs-utils nfs-common net-tools
-curl -sfL https://get.k3s.io | K3S_URL=https://192.168.2.52:6443 K3S_TOKEN=K10d106e2f9e752c263eea92f673c6b141a309c2d05f317999e2652625444862e8d::server:74eecb9dc899c7529ecdb77bf23d1129 sh -
+curl -sfL https://get.k3s.io | K3S_URL=https://192.168.2.55:6443 K3S_TOKEN=K10670031d1e422796dd97ddf3b06bdbaf326f282dc622943314a22093425c94e2b::server:9ed99d3174bb6b7f0b5bd46e06c0fb5d sh -
