@@ -1,4 +1,4 @@
-helm upgrade --cleanup-on-fail \
+sudo helm upgrade --cleanup-on-fail \
   jupyterhub jupyterhub/jupyterhub \
   --namespace jupyter-hub \
   --version=3.3.0 \

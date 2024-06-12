@@ -51,12 +51,12 @@ hub:
     preStop:
       exec:
         command: ["/bin/sh","-c","pkill [\\w-]*jupyter[\\w-]*"]
-proxy:
-  service:
-    loadBalanceIP: 192.168.1.36
-  https:
-    enabled: true
-    hosts:
-      - 192.168.1.36
-    letsencrypt:
-      contactEmail: max@ullrichfamily.com
+# proxy:
+#   service:
+#     loadBalancerIP: 192.168.1.36
+#   https:
+#     enabled: true
+#     hosts:
+#       - jupyter.tothemax.pro
+#     letsencrypt:
+#       contactEmail: max@ullrichfamily.com
