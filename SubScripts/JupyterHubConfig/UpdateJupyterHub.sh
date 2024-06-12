@@ -2,8 +2,8 @@
 sudo rm config.yaml
 wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/JupyterHubConfig/config.yaml
 
-sudo rm MonitorJupyterHub.sh
-wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/JupyterHubConfig/MonitorJupyterHub.sh
+sudo rm monitorJupyterHub.sh
+wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/JupyterHubConfig/monitorJupyterHub.sh
 
 # Update JupyterHub
 sudo helm upgrade --cleanup-on-fail \
