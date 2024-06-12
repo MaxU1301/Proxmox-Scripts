@@ -4,6 +4,7 @@ wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/
 
 sudo rm monitorJupyterHub.sh
 wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/JupyterHubConfig/monitorJupyterHub.sh
+chmod +x monitorJupyterHub.sh
 
 # Update JupyterHub
 sudo helm upgrade --cleanup-on-fail \
