@@ -28,6 +28,8 @@ sudo helm install nfs-subdir-external-provisioner nfs-subdir-external-provisione
 mkdir jupyterhub
 cd jupyterhub
 wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/JupyterHubConfig/config.yaml
+wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/JupyterHubConfig/UpdateJupyterHub.sh
+sudo chmod +x UpdateJupyterHub.sh
 
 # Install jupyterhub
 sudo helm repo add jupyterhub https://hub.jupyter.org/helm-chart/
