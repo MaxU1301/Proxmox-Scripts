@@ -34,7 +34,7 @@ singleuser:
               "gitpuller",
               "https://github.com/UMD-SustainabilityCenter/training-course",
               "main",
-              "/home/jouyvan",
+              "/home/jovyan",
             ]
   #   preStop:
   #     exec:
