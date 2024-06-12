@@ -13,4 +13,4 @@ sudo helm upgrade --cleanup-on-fail \
 # Update Update script
 sudo rm UpdateJupyterHub.sh
 wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/JupyterHubConfig/UpdateJupyterHub.sh
-sudo chmod +x UpdateJupyterHub.sh
+chmod +x UpdateJupyterHub.sh
