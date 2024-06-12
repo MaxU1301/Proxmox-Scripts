@@ -17,7 +17,7 @@ singleuser:
     # https://hub.docker.com/r/jupyter/datascience-notebook/tags/
     # Inspect the Dockerfile at:
     # https://github.com/jupyter/docker-stacks/tree/HEAD/datascience-notebook/Dockerfile
-    name: jupyter/datascience-notebook
+    name: maxullrich/jupyter-army-education
     tag: latest
   # `cmd: null` allows the custom CMD of the Jupyter docker-stacks to be used
   # which performs further customization on startup.
@@ -51,3 +51,12 @@ hub:
     preStop:
       exec:
         command: ["/bin/sh","-c","pkill [\\w-]*jupyter[\\w-]*"]
+proxy:
+  service:
+    loadBalanceIP: 192.168.1.36
+  https:
+    enabled: true
+    hosts:
+      - 192.168.1.36
+    letsencrypt:
+      contactEmail: max@ullrichfamily.com
