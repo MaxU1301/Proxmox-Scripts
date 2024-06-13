@@ -43,9 +43,6 @@ singleuser:
         #[\\w-]*jupyter[\\w-]*
 hub:
   config:
-    Authenticator:
-      admin_users:
-        - MaxU1301
     GitHubOAuthenticator:
       client_id: Iv23licZE8e723gG8osq
       client_secret: 1490440530d9ef392062c55436269b87bf7cbf82
