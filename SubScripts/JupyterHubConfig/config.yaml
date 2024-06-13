@@ -72,3 +72,4 @@ proxy:
       - https://jupyter.tothemax.pro/
     letsencrypt:
       contactEmail: max@ullrichfamily.com
+      
