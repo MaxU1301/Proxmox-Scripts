@@ -55,9 +55,14 @@ hub:
         - read:org
     JupyterHub:
       authenticator_class: github
+      admin_access: true
+      admin_users:
+        - MaxU1301
+        - mullrich
     KubeSpawner:
       k8s_api_request_timeout: 10
-      
+  baseUrl: jupyter.tothemax.pro
+
 # proxy:
 #   service:
 #     loadBalancerIP: 192.168.1.36
