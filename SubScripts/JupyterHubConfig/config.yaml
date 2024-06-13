@@ -61,7 +61,6 @@ hub:
         - mullrich
     KubeSpawner:
       k8s_api_request_timeout: 10
-  baseUrl: jupyter.tothemax.pro
 
 # proxy:
 #   service:
