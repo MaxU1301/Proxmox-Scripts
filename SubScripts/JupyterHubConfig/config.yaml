@@ -63,12 +63,12 @@ hub:
     KubeSpawner:
       k8s_api_request_timeout: 10
 
-# proxy:
-#   service:
-#     loadBalancerIP: 192.168.1.36
-#   https:
-#     enabled: true
-#     hosts:
-#       - jupyter.tothemax.pro
-#     letsencrypt:
-#       contactEmail: max@ullrichfamily.com
+proxy:
+  service:
+    loadBalancerIP: 192.168.1.36
+  https:
+    enabled: true
+    hosts:
+      - jupyter.tothemax.pro
+    letsencrypt:
+      contactEmail: max@ullrichfamily.com
