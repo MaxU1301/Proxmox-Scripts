@@ -45,15 +45,13 @@ hub:
   config:
     Authenticator:
       admin_users:
-        - max
-        - bob
-      allowed_users:
-        - kate
-        - charlie
-    DummyAuthenticator: 
-      password: a-shared-secret-password
+        - MaxU1301
+    GitHubOAuthenticator:
+      client_id: Iv23licZE8e723gG8osq
+      client_secret: 1490440530d9ef392062c55436269b87bf7cbf82
+      oauth_callback_url: https://jupyter.tothemax.pro/hub/oauth_callback
     JupyterHub:
-      authenticator_class: dummy
+      authenticator_class: github
     KubeSpawner:
       k8s_api_request_timeout: 10
   lifecycle:
