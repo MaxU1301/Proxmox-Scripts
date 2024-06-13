@@ -44,8 +44,8 @@ singleuser:
 hub:
   config:
     GitHubOAuthenticator:
-      client_id: Iv23licZE8e723gG8osq
-      client_secret: 1490440530d9ef392062c55436269b87bf7cbf82
+      client_id: Ov23liG2i0iwl8OoN3Or
+      client_secret: 0815e1e698adcc80fcf1f25d1a4a971c869234f7
       oauth_callback_url: https://jupyter.tothemax.pro/hub/oauth_callback
     JupyterHub:
       authenticator_class: github
