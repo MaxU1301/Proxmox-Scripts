@@ -69,6 +69,6 @@ proxy:
   https:
     enabled: true
     hosts:
-      - jupyter.tothemax.pro
+      - https://jupyter.tothemax.pro/
     letsencrypt:
       contactEmail: max@ullrichfamily.com
