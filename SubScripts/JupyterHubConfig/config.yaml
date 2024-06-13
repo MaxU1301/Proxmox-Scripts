@@ -46,9 +46,9 @@ hub:
     Authenticator:
       enable_auth_state: true
     GitHubOAuthenticator:
-      client_id: "Ov23liG2i0iwl8OoN3Or"
-      client_secret: "0815e1e698adcc80fcf1f25d1a4a971c869234f7"
-      oauth_callback_url: "https://jupyter.tothemax.pro/hub/oauth_callback"
+      client_id: Ov23liG2i0iwl8OoN3Or
+      client_secret: 0815e1e698adcc80fcf1f25d1a4a971c869234f7
+      oauth_callback_url: https://jupyter.tothemax.pro/hub/oauth_callback
       allowed_organizations:
         - UMD-SustainabilityCenter 
       scope:
@@ -57,10 +57,7 @@ hub:
       authenticator_class: github
     KubeSpawner:
       k8s_api_request_timeout: 10
-  lifecycle:
-    preStop:
-      exec:
-        command: ["/bin/sh","-c","pkill [\\w-]*jupyter[\\w-]*"]
+      
 # proxy:
 #   service:
 #     loadBalancerIP: 192.168.1.36
