@@ -44,6 +44,9 @@ singleuser:
         # jupyterhub-sing
         #[\\w-]*jupyter[\\w-]*
 hub:
+  storage:
+    dynamic:
+      storageClass: nfs-client
   config:
     Authenticator:
       enable_auth_state: true
