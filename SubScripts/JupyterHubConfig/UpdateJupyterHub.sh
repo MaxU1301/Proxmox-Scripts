@@ -1,5 +1,5 @@
 # Update Config File
-sudo rm config.yaml
+if [ -f config.yaml ]; then rm config.yaml; fi
 wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/JupyterHubConfig/config.yaml
 
 client_secret_secret="$(grep -n "client_secret" secrets.yaml | head -n 1 | cut -d: -f1)"
@@ -13,7 +13,7 @@ sed -i -e s/client_secret:/"$client_secret"/g config.yaml
 
 echo client_secret
 
-sudo rm monitorJupyterHub.sh
+if [ -f monitorJupyterHub.sh ]; then rm monitorJupyterHub.sh; fi
 wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/JupyterHubConfig/monitorJupyterHub.sh
 chmod +x monitorJupyterHub.sh
 
@@ -26,6 +26,6 @@ sudo helm upgrade --cleanup-on-fail \
   --values config.yaml
 
 # Update Update script
-sudo rm UpdateJupyterHub.sh
+if [ -f UpdateJupyterHub.sh ]; then rm UpdateJupyterHub.sh; fi
 wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/JupyterHubConfig/UpdateJupyterHub.sh
 chmod +x UpdateJupyterHub.sh
