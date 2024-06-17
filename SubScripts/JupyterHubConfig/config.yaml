@@ -48,29 +48,29 @@ hub:
     Authenticator:
       enable_auth_state: true
       admin_users:
-        - MaxU1301
-    #   allowed_users:
-    #     - Osama
-    #     - Oliver
-    #     - Ali
-    # DummyAuthenticator:
-    #   password: password
-    GitHubOAuthenticator:
-      client_id: 
-      client_secret: 
-      oauth_callback_url: https://jupyter.tothemax.pro/hub/oauth_callback
+        - Max
+      allowed_users:
+        - Osama
+        - Oliver
+        - Ali
+    DummyAuthenticator:
+      password: password
+    # GitHubOAuthenticator:
+    #   client_id: 
+    #   client_secret: 
+    #   oauth_callback_url: https://jupyter.tothemax.pro/hub/oauth_callback
       # allowed_organizations:
       #   - UMD-SustainabilityCenter 
       # scope:
       #   - read:org
     JupyterHub:
-      authenticator_class: github
+      authenticator_class: dummy
       cookie_options:
         secure: false
       admin_access: true
-      admin_users:
-        - MaxU1301
-        - mullrich
+      # admin_users:
+      #   - MaxU1301
+      #   - mullrich
 # proxy:
 #   service:
 #     loadBalancerIP: 192.168.1.36
