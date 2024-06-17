@@ -45,14 +45,14 @@ singleuser:
         #[\\w-]*jupyter[\\w-]*
 hub:
   config:
-    Authenticator:
-      enable_auth_state: true
-      # admin_users:
-      #   - Max
-      # allowed_users:
-      #   - Osama
-      #   - Oliver
-      #   - Ali
+    # Authenticator:
+    #   enable_auth_state: true
+    #   admin_users:
+    #     - Max
+    #   allowed_users:
+    #     - Osama
+    #     - Oliver
+    #     - Ali
     # DummyAuthenticator:
     #   password: password
     GitHubOAuthenticator:
@@ -72,14 +72,6 @@ hub:
       admin_users:
         - MaxU1301
         - mullrich
-    KubeSpawner:
-      k8s_api_request_timeout: 10
-auth:
-  type: github
-  github:
-    clientId: 
-    clientSecret: 
-    callbackUrl: http://192.168.1.36/hub/oauth_callback
 # proxy:
 #   service:
 #     loadBalancerIP: 192.168.1.36
