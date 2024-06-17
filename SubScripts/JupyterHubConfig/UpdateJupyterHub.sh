@@ -10,6 +10,8 @@ client_id="$(awk NR=="$client_id_secret" secrets.yaml)"
 
 sed -i -e s/client_id:/"$client_id"/g config.yaml
 sed -i -e s/client_secret:/"$client_secret"/g config.yaml
+sed -i -e s/clientId:/"$client_id"/g config.yaml
+sed -i -e s/clientSecret:/"$client_secret"/g config.yaml
 
 echo client_secret
 
