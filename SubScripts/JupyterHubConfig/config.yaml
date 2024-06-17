@@ -48,7 +48,7 @@ hub:
     Authenticator:
       enable_auth_state: true
       admin_users:
-        - Max
+        - MaxU1301
     #   allowed_users:
     #     - Osama
     #     - Oliver
