@@ -8,7 +8,11 @@ client_id_secret="$(grep -n "client_id" secrets.yaml | head -n 1 | cut -d: -f1)"
 client_secret_config="$(grep -n "client_secret" config.yaml | head -n 1 | cut -d: -f1)"
 client_id_config="$(grep -n "client_id" config.yaml | head -n 1 | cut -d: -f1)"
 
-client_secret="$(sed -n "$client_secret_secret"p)"
+client_secret="$(awk NR=="$client_secret_secret" secrets.yaml)"
+client_id="$(awk NR=="$client_id_secret" secrets.yaml)"
+
+sed -i -e 's/client_id:/"$client_id"/g' config.yaml
+sed -i -e 's/client_secret:/"$client_secret"/g' config.yaml
 
 echo client_secret
 
