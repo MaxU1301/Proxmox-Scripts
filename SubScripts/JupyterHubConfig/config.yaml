@@ -45,29 +45,29 @@ hub:
   config:
     Authenticator:
       enable_auth_state: true
-      admin_users:
-        - Max
-      allowed_users:
-        - Osama
-        - Oliver
-        - Ali
-    DummyAuthenticator:
-      password: password
-    # GitHubOAuthenticator:
-    #   client_id: 
-    #   client_secret: 
-    #   oauth_callback_url: http://jupyter.tothemax.pro/hub/oauth_callback
-    #   hostedDomain: jupyter.tothemax.pro
-    #   allowed_organizations:
-    #     - UMD-SustainabilityCenter 
-    #   scope:
-    #     - read:org
-    JupyterHub:
-      authenticator_class: dummy
-      # admin_access: true
       # admin_users:
-      #   - MaxU1301
-      #   - mullrich
+      #   - Max
+      # allowed_users:
+      #   - Osama
+      #   - Oliver
+      #   - Ali
+    # DummyAuthenticator:
+    #   password: password
+    GitHubOAuthenticator:
+      client_id: 
+      client_secret: 
+      oauth_callback_url: http://jupyter.tothemax.pro/hub/oauth_callback
+      hostedDomain: jupyter.tothemax.pro
+      allowed_organizations:
+        - UMD-SustainabilityCenter 
+      scope:
+        - read:org
+    JupyterHub:
+      authenticator_class: github
+      admin_access: true
+      admin_users:
+        - MaxU1301
+        - mullrich
     KubeSpawner:
       k8s_api_request_timeout: 10
 
