@@ -5,9 +5,6 @@ wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/
 client_secret_secret="$(grep -n "client_secret" secrets.yaml | head -n 1 | cut -d: -f1)"
 client_id_secret="$(grep -n "client_id" secrets.yaml | head -n 1 | cut -d: -f1)"
 
-client_secret_config="$(grep -n "client_secret" config.yaml | head -n 1 | cut -d: -f1)"
-client_id_config="$(grep -n "client_id" config.yaml | head -n 1 | cut -d: -f1)"
-
 client_secret="$(awk NR=="$client_secret_secret" secrets.yaml)"
 client_id="$(awk NR=="$client_id_secret" secrets.yaml)"
 
