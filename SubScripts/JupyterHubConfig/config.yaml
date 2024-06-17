@@ -45,10 +45,10 @@ singleuser:
         #[\\w-]*jupyter[\\w-]*
 hub:
   config:
-    # Authenticator:
-    #   enable_auth_state: true
-    #   admin_users:
-    #     - Max
+    Authenticator:
+      enable_auth_state: true
+      admin_users:
+        - Max
     #   allowed_users:
     #     - Osama
     #     - Oliver
