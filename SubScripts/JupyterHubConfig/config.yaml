@@ -36,7 +36,7 @@ singleuser:
               "gitpuller",
               "https://github.com/UMD-SustainabilityCenter/training-course",
               "main",
-              "files",
+              "training-course",
             ]
 hub:
   db:
