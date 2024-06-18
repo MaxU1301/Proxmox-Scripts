@@ -47,9 +47,7 @@ hub:
       enable_auth_state: true
       admin_users:
         - Max
-      allowed_users:
         - Osama
-        - Oliver
         - Ali
     NativeAuthenticator:
       ask_email_on_signup: true
