@@ -46,7 +46,7 @@ singleuser:
 hub:
   db:
     pvc:
-      storageClass: nfs-client
+      storageClassName: nfs-client
   config:
     Authenticator:
       enable_auth_state: true
