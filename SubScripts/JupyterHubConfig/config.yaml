@@ -58,7 +58,8 @@ hub:
       admin_access: true
   templatePaths:
     [
-      f"{os.path.dirname(nativeauthenticator.__file__)}/templates/",
+      f,
+      "{os.path.dirname(nativeauthenticator.__file__)}/templates/",
     ]
 # proxy:
 #   service:
