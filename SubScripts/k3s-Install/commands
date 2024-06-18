@@ -3,7 +3,7 @@ curl https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/
 
 # Install Worker
 sudo apt install -y cifs-utils nfs-common net-tools
-curl -sfL https://get.k3s.io | K3S_URL=https://192.168.2.49:6443 K3S_TOKEN=K101ed03ac92d5d02013836570a04b1079996cdcdfab98676f1c3dc8a0871c503da::server:185c75728eb354f1ad50354fb3675b9b sh -
+curl -sfL https://get.k3s.io | K3S_URL=https://192.168.2.53:6443 K3S_TOKEN=K10691ba72d28fa141d29a9200c427f13493bb006d6150801475106afe92219d4ed::server:4052989da2440b30e8240ca1900eae90 sh -
 
 # Install JupyterHub on Server
 curl https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/k3s-Install/k3s-JupyterHub-Setup.sh | sh
