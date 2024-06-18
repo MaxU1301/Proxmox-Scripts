@@ -56,7 +56,7 @@ hub:
     JupyterHub:
       authenticator_class: native
       admin_access: true
-      template_paths: [f"{os.path.dirname(nativeauthenticator.__file__)}/templates/"],
+      template_paths: [f"{os.path.dirname(nativeauthenticator.__file__)}/templates/",]
 # proxy:
 #   service:
 #     loadBalancerIP: 192.168.1.36
