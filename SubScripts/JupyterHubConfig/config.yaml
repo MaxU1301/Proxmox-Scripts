@@ -56,8 +56,8 @@ hub:
         - Osama
         - Oliver
         - Ali
-    DummyAuthenticator:
-      password: password
+    # DummyAuthenticator:
+    #   password: password
     # GitHubOAuthenticator:
     #   client_id: 
     #   client_secret: 
@@ -67,7 +67,7 @@ hub:
       # scope:
       #   - read:org
     JupyterHub:
-      authenticator_class: dummy
+      authenticator_class: native
       cookie_options:
         secure: false
       admin_access: true
