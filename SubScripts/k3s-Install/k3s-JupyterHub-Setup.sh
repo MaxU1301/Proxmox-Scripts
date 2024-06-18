@@ -22,10 +22,9 @@ sudo helm install nfs-subdir-external-provisioner nfs-subdir-external-provisione
     --set storageClass.defaultClass=false \
     --set storageClass.name=nfs-client \
     --set storageClass.accessModes=ReadWriteOnce
-sudo kubectl expose deployment rancher --name rancher-lb --port=443 --type=LoadBalancer -n cattle-system service/rancher-lb exposed
 
 # Install Rancher
-sudo helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
+sudo helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
 sudo kubectl create namespace cattle-system
 
 sudo kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.15.0/cert-manager.crds.yaml
@@ -36,12 +35,13 @@ sudo helm install cert-manager jetstack/cert-manager \
   --create-namespace \
   --set installCRDs=true
 
-sudo helm install rancher rancher-stable/rancher \
+sudo helm install rancher rancher-latest/rancher \
   --namespace cattle-system \
   --set hostname=rancher.tothemax.pro \
   --set bootstrapPassword=admin
 
-kubectl -n cattle-system rollout status deploy/rancher
+sudo kubectl -n cattle-system rollout status deploy/rancher
+sudo kubectl expose deployment rancher --name rancher-lb --port=443 --type=LoadBalancer -n cattle-system service/rancher-lb exposed
 
 # Setup Jupyterhub
 # Download config.yaml
