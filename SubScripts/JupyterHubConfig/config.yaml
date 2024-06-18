@@ -38,11 +38,6 @@ singleuser:
               "main",
               "files",
             ]
-  #   preStop:
-  #     exec:
-  #       command: ["pkill", "jupyterhub-sing"]
-        # jupyterhub-sing
-        #[\\w-]*jupyter[\\w-]*
 hub:
   db:
     pvc:
@@ -56,22 +51,12 @@ hub:
         - Osama
         - Oliver
         - Ali
-    # DummyAuthenticator:
-    #   password: password
-    # GitHubOAuthenticator:
-    #   client_id: 
-    #   client_secret: 
-    #   oauth_callback_url: https://jupyter.tothemax.pro/hub/oauth_callback
-      # allowed_organizations:
-      #   - UMD-SustainabilityCenter 
-      # scope:
-      #   - read:org
+    NativeAuthenticator:
+      ask_email_on_signup: true
     JupyterHub:
       authenticator_class: native
       admin_access: true
-      # admin_users:
-      #   - MaxU1301
-      #   - mullrich
+      template_paths: [f"{os.path.dirname(nativeauthenticator.__file__)}/templates/"]
 # proxy:
 #   service:
 #     loadBalancerIP: 192.168.1.36
