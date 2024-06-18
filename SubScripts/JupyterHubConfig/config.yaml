@@ -68,8 +68,6 @@ hub:
       #   - read:org
     JupyterHub:
       authenticator_class: native
-      cookie_options:
-        secure: false
       admin_access: true
       # admin_users:
       #   - MaxU1301
