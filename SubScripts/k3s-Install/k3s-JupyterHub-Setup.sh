@@ -22,7 +22,7 @@ sudo helm install nfs-subdir-external-provisioner nfs-subdir-external-provisione
     --set storageClass.defaultClass=false \
     --set storageClass.name=nfs-client \
     --set storageClass.accessModes=ReadWriteOnce
-
+sudo kubectl expose deployment rancher --name rancher-lb --port=443 --type=LoadBalancer -n cattle-system service/rancher-lb exposed
 # Install Rancher
 sudo helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
 sudo kubectl create namespace cattle-system
