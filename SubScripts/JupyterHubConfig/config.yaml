@@ -27,7 +27,7 @@ singleuser:
   storage:
     dynamic:
       storageClass: nfs-client
-    capacity: 10Gi
+    capacity: 50Gi
   lifecycleHooks:
     postStart:
         exec:

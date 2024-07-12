@@ -1,1 +1,1 @@
-watch -n 0.1 sudo kubectl get all -n jupyter-hub -o wide
+watch -n 0.1 kubectl get all -n jupyter-hub -o wide

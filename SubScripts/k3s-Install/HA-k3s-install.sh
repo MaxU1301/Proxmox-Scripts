@@ -52,13 +52,13 @@ vip=141.215.12.41
 masters=($master2 $master3)
 
 # Array of worker nodes
-workers=($worker1 $worker2 $worker3 $worker4 $worker5 $worker6 $worker7)
+workers=($worker1 $worker2 $worker3 $worker4 $worker5 $worker6)
 
 # Array of all
-all=($master1 $master2 $master3 $worker1 $worker2 $worker3 $worker4 $worker5 $worker6 $worker7)
+all=($master1 $master2 $master3 $worker1 $worker2 $worker3 $worker4 $worker5 $worker6)
 
 # Array of all minus master
-allnomaster1=($master2 $master3 $worker1 $worker2 $worker3 $worker4 $worker5 $worker6 $worker7)
+allnomaster1=($master2 $master3 $worker1 $worker2 $worker3 $worker4 $worker5 $worker6)
 
 #Loadbalancer IP range
 lbrange=141.215.12.53-141.215.12.57
