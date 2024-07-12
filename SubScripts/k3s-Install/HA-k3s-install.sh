@@ -27,18 +27,17 @@ KVVERSION="v0.6.3"
 k3sVersion="v1.26.10+k3s2"
 
 # Set the IP addresses of the master and work nodes
-master1=141.215.12.42
-master2=141.215.12.43
-master3=141.215.12.44
+master1=141.215.12.43
+master2=141.215.12.44
+master3=141.215.12.45
 
-worker1=141.215.12.45
-worker2=141.215.12.46
-worker3=141.215.12.47
-worker4=141.215.12.48
-worker5=141.215.12.49
-worker6=141.215.12.50
-worker7=141.215.12.51
-worker8=141.215.12.52
+worker1=141.215.12.46
+worker2=141.215.12.47
+worker3=141.215.12.48
+worker4=141.215.12.49
+worker5=141.215.12.50
+worker6=141.215.12.51
+worker7=141.215.12.52
 
 # User of remote machines
 user=ubuntu
@@ -53,13 +52,13 @@ vip=141.215.12.41
 masters=($master2 $master3)
 
 # Array of worker nodes
-workers=($worker1 $worker2 $worker3 $worker4 $worker5 $worker6 $worker7 $worker8)
+workers=($worker1 $worker2 $worker3 $worker4 $worker5 $worker6 $worker7)
 
 # Array of all
-all=($master1 $master2 $master3 $worker1 $worker2 $worker3 $worker4 $worker5 $worker6 $worker7 $worker8)
+all=($master1 $master2 $master3 $worker1 $worker2 $worker3 $worker4 $worker5 $worker6 $worker7)
 
 # Array of all minus master
-allnomaster1=($master2 $master3 $worker1 $worker2 $worker3 $worker4 $worker5 $worker6 $worker7 $worker8)
+allnomaster1=($master2 $master3 $worker1 $worker2 $worker3 $worker4 $worker5 $worker6 $worker7)
 
 #Loadbalancer IP range
 lbrange=141.215.12.53-141.215.12.57
