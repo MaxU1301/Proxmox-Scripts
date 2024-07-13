@@ -28,16 +28,16 @@ singleuser:
     dynamic:
       storageClass: nfs-client
     capacity: 50Gi
-  lifecycleHooks:
-    postStart:
-        exec:
-          command:
-            [
-              "gitpuller",
-              "https://github.com/UMD-SustainabilityCenter/training-course",
-              "main",
-              "training-course",
-            ]
+  # lifecycleHooks:
+  #   postStart:
+  #       exec:
+  #         command:
+  #           [
+  #             "gitpuller",
+  #             "https://github.com/UMD-SustainabilityCenter/training-course",
+  #             "main",
+  #             "training-course",
+  #           ]
 hub:
   db:
     pvc:
