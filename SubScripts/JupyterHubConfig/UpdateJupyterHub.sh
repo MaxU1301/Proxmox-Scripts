@@ -8,7 +8,7 @@ chmod +x monitorJupyterHub.sh
 
 # Update JupyterHub
 echo Updating Jupyter Hub
-sudo helm upgrade --cleanup-on-fail \
+helm upgrade --cleanup-on-fail \
   jupyterhub jupyterhub/jupyterhub \
   --namespace jupyter-hub \
   --version=3.3.0 \
