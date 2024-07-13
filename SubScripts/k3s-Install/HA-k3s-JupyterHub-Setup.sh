@@ -39,6 +39,7 @@ wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/
 wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/JupyterHubConfig/UpdateJupyterHub.sh
 wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/JupyterHubConfig/monitorJupyterHub.sh
 chmod +x UpdateJupyterHub.sh
+chmod +x monitorJupyterHub.sh
 
 # Install jupyterhub
 helm repo add jupyterhub https://hub.jupyter.org/helm-chart/
