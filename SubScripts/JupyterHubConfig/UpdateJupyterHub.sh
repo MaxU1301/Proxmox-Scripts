@@ -7,6 +7,7 @@ wget https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/
 chmod +x monitorJupyterHub.sh
 
 # Update JupyterHub
+echo Updating Jupyter Hub
 sudo helm upgrade --cleanup-on-fail \
   jupyterhub jupyterhub/jupyterhub \
   --namespace jupyter-hub \
