@@ -24,7 +24,7 @@ singleuser:
   # `cmd: null` allows the custom CMD of the Jupyter docker-stacks to be used
   # which performs further customization on startup.
   cmd: null
-  defautltURL: lab/tree/welcomePage.ipynb
+  defautltUrl: lab/tree/welcomePage.ipynb
   storage:
     dynamic:
       storageClass: nfs-client
