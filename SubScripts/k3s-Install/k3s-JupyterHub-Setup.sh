@@ -16,8 +16,8 @@ sudo k3s kubectl create -f https://raw.githubusercontent.com/MaxU1301/Proxmox-Sc
 # Setup nfs provisioner
 sudo helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
 sudo helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \
-    --set nfs.server=192.168.1.8 \
-    --set nfs.path=/mnt/Ptonomy/k8s-NFS-test \
+    --set nfs.server=141.215.12.28 \
+    --set nfs.path=/mnt/UMDSC-Storage-1/JupyterHubUserStorage \
     --set storageClass.archiveOnDelete=false \
     --set storageClass.defaultClass=false \
     --set storageClass.name=nfs-client \
