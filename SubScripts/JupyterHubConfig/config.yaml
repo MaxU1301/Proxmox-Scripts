@@ -59,6 +59,9 @@ hub:
     00_nativeauthenticator_templates: |
       import os, nativeauthenticator
       c.JupyterHub.template_paths = [f"{os.path.dirname(nativeauthenticator.__file__)}/templates/"]
+proxy:
+  service:
+    loadBalancerIP: 141.215.12.54
 # proxy:
 #   service:
 #     loadBalancerIP: 192.168.1.36
