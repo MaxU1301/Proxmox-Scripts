@@ -62,10 +62,10 @@ hub:
 proxy:
   service:
     loadBalancerIP: 141.215.12.54
-  https:
-    enabled: true
-    hosts:
-      - sctraingcourse.engin.umd.umich.edu
-    type: secret
-    secret:
-      name: jupyter-tls
+  # https:
+  #   enabled: true
+  #   hosts:
+  #     - sctraingcourse.engin.umd.umich.edu
+  #   type: secret
+  #   secret:
+  #     name: jupyter-tls
