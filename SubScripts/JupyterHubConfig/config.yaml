@@ -69,3 +69,9 @@ proxy:
   #   type: secret
   #   secret:
   #     name: jupyter-tls
+  https:
+    enabled: true
+    hosts:
+      - sctraingcourse.engin.umd.umich.edu
+    letsencrypt:
+      contactEmail: mullrich@umich.edu
