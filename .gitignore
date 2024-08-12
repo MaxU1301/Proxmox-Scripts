@@ -1,1 +1,4 @@
 secrets.yaml
+
+# Apple Files
+.DS_Store
