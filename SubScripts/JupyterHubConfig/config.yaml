@@ -19,12 +19,12 @@ singleuser:
     # https://hub.docker.com/r/jupyter/datascience-notebook/tags/
     # Inspect the Dockerfile at:
     # https://github.com/jupyter/docker-stacks/tree/HEAD/datascience-notebook/Dockerfile
-    name: maxullrich/jupyter-army-education
+    name: jupyter/all-spark-notebook #maxullrich/jupyter-army-education
     tag: latest
   # `cmd: null` allows the custom CMD of the Jupyter docker-stacks to be used
   # which performs further customization on startup.
   cmd: null
-  defaultUrl: lab/tree/training-course/welcomePage.ipynb
+  defaultUrl: doc/tree/training-course/welcomePage.ipynb
   storage:
     dynamic:
       storageClass: nfs-client
