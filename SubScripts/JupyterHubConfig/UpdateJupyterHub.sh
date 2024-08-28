@@ -1,9 +1,9 @@
 # Update Config File
 if [ -f config.yaml ]; then rm config.yaml; fi
-curl -O https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/JupyterHubConfig/config.yaml
+curl -O 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/JupyterHubConfig/config.yaml
 
 if [ -f monitorJupyterHub.sh ]; then rm monitorJupyterHub.sh; fi
-curl -O https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/JupyterHubConfig/monitorJupyterHub.sh
+curl -O 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/JupyterHubConfig/monitorJupyterHub.sh
 chmod +x monitorJupyterHub.sh
 
 # Update JupyterHub
