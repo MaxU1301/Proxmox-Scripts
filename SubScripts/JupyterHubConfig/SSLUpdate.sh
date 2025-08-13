@@ -27,8 +27,8 @@ check_deps() {
 # Prompts the user to paste multi-line content
 prompt_for_paste() {
     local prompt_message=$1
-    echo "$prompt_message"
-    echo "Paste the content, then press Ctrl+D on a new line to finish."
+    echo -e "\n$prompt_message" >&2
+    echo "Paste the content, then press Ctrl+D on a new line to finish." >&2
     cat
 }
 
@@ -107,9 +107,13 @@ fi
 
 # --- Step 2: Check Kubernetes Secret and Backup ---
 TMP_SECRET_CERT=$(mktemp /tmp/secret_cert_XXXXXX.pem)
+TMP_SECRET_KEY=$(mktemp /tmp/secret_key_XXXXXX.pem)
 if ! get_from_secret 'tls\.crt' "$TMP_SECRET_CERT"; then
     echo "No existing secret '$SECRET_NAME' found. This will be a new installation."
 else
+    # A secret exists, so we should also try to get the key for later use (e.g., fallback)
+    get_from_secret 'tls\.key' "$TMP_SECRET_KEY"
+
     echo "Found existing secret '$SECRET_NAME'. Checking for backup..."
     is_backed_up=false
     shopt -s nullglob
@@ -130,8 +134,8 @@ else
         BACKUP_KEY_FILE="${BACKUP_DIR}/${CERT_NAME}.key.${TIMESTAMP}.bak"
         
         cp "$TMP_SECRET_CERT" "$BACKUP_CERT_FILE"
-        if get_from_secret 'tls\.key' "$TMP_SECRET_KEY"; then
-            cp "$TMP_SECRET_KEY" "$BACKUP_KEY_FILE"
+        if [ -s "$TMP_SECRET_KEY" ]; then # Check if we successfully got the key
+            cp "$TMP_SECRET_KEY" "$BACKUP_KEY_FILE" # If so, back it up
         else
             echo "Warning: Could not retrieve key from secret. Backup might be incomplete."
         fi
@@ -153,8 +157,8 @@ if [ -s "$TMP_SECRET_CERT" ]; then # Only run this block if a secret existed
                 echo "Local certificate file has been updated."
                 break
             else
-                echo "Error: Invalid certificate format. Using the existing certificate in '$NEW_CERT_FILE'."
-                break
+                echo "Error: Invalid certificate format. Please try again."
+                # Loop will continue, allowing user to re-paste
             fi
         done
     else
@@ -184,8 +188,8 @@ if [ -s "$TMP_SECRET_CERT" ]; then # Only run this block if a secret existed
                         echo "Error: The pasted certificate is not newer than the one in the secret. Please paste a different one."
                     fi
                 else
-                    echo "Error: Invalid certificate format. Using the existing certificate in '$NEW_CERT_FILE'."
-                    break
+                    echo "Error: Invalid certificate format. Please try again."
+                    # Loop will continue, allowing user to re-paste
                 fi
             done
         else
