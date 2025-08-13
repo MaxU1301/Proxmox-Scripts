@@ -1,33 +1,67 @@
 #!/bin/bash
 set -euo pipefail
 
-# Update Config File
-if [ -f config.yaml ]; then rm config.yaml; fi
-echo "Downloading config.yaml..."
-curl -H 'Cache-Control: no-cache, no-store' -O https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/JupyterHubConfig/config.yaml \
-  || { echo "Error: Failed to download config.yaml. Aborting."; exit 1; }
-echo "config.yaml downloaded successfully."
+# --- Helper Function ---
 
-# Update Monitor Script
-if [ -f monitorJupyterHub.sh ]; then rm monitorJupyterHub.sh; fi
-echo "Downloading monitorJupyterHub.sh..."
-curl -H 'Cache-Control: no-cache, no-store' -O https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/JupyterHubConfig/monitorJupyterHub.sh \
-  || { echo "Error: Failed to download monitorJupyterHub.sh. Aborting."; exit 1; }
-chmod +x monitorJupyterHub.sh \
-  || { echo "Error: Failed to set execute permissions on monitorJupyterHub.sh. Aborting."; exit 1; }
-echo "monitorJupyterHub.sh downloaded and permissions set."
+# Downloads a file and replaces the local version only if it's different.
+# Reports whether the file was changed.
+#
+# Usage: update_file_if_changed "filename" "url" ["executable"]
+#
+# $1: The local filename.
+# $2: The URL to download from.
+# $3: (optional) A non-empty string (e.g., "executable") to make the file executable.
+update_file_if_changed() {
+    local filename="$1"
+    local url="$2"
+    local is_executable="${3:-}"
+    local tmp_file
+    
+    # Create a temporary file in the current directory to handle potential mv cross-device issues
+    tmp_file=$(mktemp ./"${filename}.XXXXXX")
+    # Ensure temp file is cleaned up on exit or error
+    trap 'rm -f "$tmp_file"' RETURN
 
-# Update SSL Script
-if [ -f SSLUpdate.sh ]; then rm SSLUpdate.sh; fi # Corrected filename here
-echo "Downloading SSLUpdate.sh..."
-curl -H 'Cache-Control: no-cache, no-store' -O https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/JupyterHubConfig/SSLUpdate.sh \
-  || { echo "Error: Failed to download SSLUpdate.sh. Aborting."; exit 1; }
-chmod +x SSLUpdate.sh \
-  || { echo "Error: Failed to set execute permissions on SSLUpdate.sh. Aborting."; exit 1; }
-echo "SSLUpdate.sh downloaded and permissions set."
+    echo "Checking for updates for '$filename'..."
+    
+    # Download the file with cache-busting headers, following redirects (-L)
+    if ! curl -s -H 'Cache-Control: no-cache, no-store' -L -o "$tmp_file" "$url"; then
+        echo "Error: Failed to download '$filename' from '$url'. Aborting."
+        return 1 # set -e will cause script to exit
+    fi
 
-# Update JupyterHub
-echo Updating Jupyter Hub
+    # Check if the downloaded file is empty, which indicates a problem
+    if [ ! -s "$tmp_file" ]; then
+        echo "Error: Downloaded file '$filename' is empty. Aborting."
+        return 1 # set -e will cause script to exit
+    fi
+
+    if [ ! -f "$filename" ]; then
+        echo " -> New file. '$filename' has been created."
+        mv "$tmp_file" "$filename"
+    elif ! cmp -s "$filename" "$tmp_file"; then
+        echo " -> Found a new version. '$filename' has been updated."
+        mv "$tmp_file" "$filename"
+    else
+        echo " -> '$filename' is already up to date."
+    fi
+
+    if [ -n "$is_executable" ]; then
+        chmod +x "$filename" || { echo "Error: Failed to set execute permissions on '$filename'. Aborting."; return 1; }
+    fi
+}
+
+# --- Main Script ---
+
+BASE_URL="https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/JupyterHubConfig"
+
+update_file_if_changed "config.yaml" "${BASE_URL}/config.yaml"
+update_file_if_changed "monitorJupyterHub.sh" "${BASE_URL}/monitorJupyterHub.sh" "executable"
+update_file_if_changed "SSLUpdate.sh" "${BASE_URL}/SSLUpdate.sh" "executable"
+
+echo "" # Add a newline for better readability
+
+echo "Updating JupyterHub Helm release..."
 helm upgrade --cleanup-on-fail \
   jupyterhub jupyterhub/jupyterhub \
   --namespace jupyter-hub \
@@ -36,14 +70,10 @@ helm upgrade --cleanup-on-fail \
   --values config.yaml \
   || { echo "Error: Helm upgrade failed. Please check the output above for details. Aborting."; exit 1; }
 echo "JupyterHub updated successfully via Helm."
+echo ""
 
-# Update Update script
-if [ -f UpdateJupyterHub.sh ]; then rm UpdateJupyterHub.sh; fi
-echo "Downloading UpdateJupyterHub.sh (self-update)..."
-curl -O https://raw.githubusercontent.com/MaxU1301/Proxmox-Scripts/main/SubScripts/JupyterHubConfig/UpdateJupyterHub.sh \
-  || { echo "Error: Failed to download UpdateJupyterHub.sh for self-update. This might indicate network issues."; exit 1; }
-chmod +x UpdateJupyterHub.sh \
-  || { echo "Error: Failed to set execute permissions on UpdateJupyterHub.sh for self-update. This might indicate permission issues."; exit 1; }
-echo "UpdateJupyterHub.sh self-updated successfully."
+# Self-update this script last
+update_file_if_changed "UpdateJupyterHub.sh" "${BASE_URL}/UpdateJupyterHub.sh" "executable"
 
+echo ""
 echo "All updates completed."
